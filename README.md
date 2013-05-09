@@ -50,7 +50,7 @@ Zscheduler.showdown # run shutdown hooks and cancel timers
 
 run now and every
 ```ruby
-Zscheduler.now_and_every 10 do
+Zscheduler.every 10, immediately: true do
   puts "I'll run immediately and every 10 seconds"
 end
 

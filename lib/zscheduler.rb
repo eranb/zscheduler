@@ -9,17 +9,14 @@ module Zscheduler
 
       reactor_running? or start_reactor
 
-      add_shutdown_hook block if options[:on_shutdown]
+      add_shutdown_hook &block if options[:on_shutdown]
+      block.call if options[:immediately]
 
       timers.push EM::PeriodicTimer.new(Integer frequency) do
         options[:on_thread] ? Thread.new(&block) : block.call
       end
 
       timers.last
-    end
-
-    def now_and_every(*args,&block)
-      block.call & every(*args,&block)
     end
 
     def stop
@@ -35,7 +32,7 @@ module Zscheduler
     end
 
     def join
-      EM.reactor_thread.join
+      (wrapper or EM.reactor_thread).join
     end
 
     private
