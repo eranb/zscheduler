@@ -32,6 +32,8 @@ require 'zscheduler'
 Zscheduler.every 10 do
   puts "I'm running every 10 seconds!"
 end
+
+Zscheduler.join
 ```
 
 shutdown hooks
@@ -54,6 +56,7 @@ Zscheduler.every 10, immediately: true do
   puts "I'll run immediately and every 10 seconds"
 end
 
+Zscheduler.join
 ```
 
 run it on a thread
@@ -62,6 +65,8 @@ run it on a thread
 Zscheduler.every 10, on_thread: true do
   puts "I'm running on a thread every 10 seconds"
 end
+
+Zscheduler.join
 ```
 basic duration utils are also included
 
@@ -81,6 +86,7 @@ Zscheduler.every 4.hours do
   puts "I'm running every 4 hours..."
 end
 
+Zscheduler.join
 ```
 
 ### Coexistence with EventMachine
