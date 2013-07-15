@@ -7,9 +7,6 @@ reactor is running or not, if its already running we can stop/start the schedule
 w/o affecting the actual reactor and the second reason is to add some useful
 scheduling methods as mentioned below.
 
-### Why "Zscheduler" ?
-because `scheduler` was already taken on `rubygems.org` and also because of [Zee Germans](http://www.urbandictionary.com/define.php?term=Zee%20Germans).
-
 ### Installation
 via Gemfile
 
