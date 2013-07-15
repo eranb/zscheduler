@@ -1,8 +1,8 @@
 ## Zscheduler 
-minimalistic scheduler on top of `event-machine`
+minimalistic scheduler on top of `eventmachine`
 
 ### Why ?
-two reasons, the first is that we don't need to give a fuck if `event-machine`
+two reasons, the first is that we don't need to give a fuck if `eventmachine`
 reactor is running or not, if its already running we can stop/start the scheduler
 w/o affecting the actual reactor and the second reason is to add some useful
 scheduling methods as mentioned below.
