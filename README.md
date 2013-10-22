@@ -40,11 +40,11 @@ Zscheduler.every 10, on_shutdown: true do
   puts "I'm running every 10 seconds and on shutdown!"
 end
 
-Zscheduler.add_showdown_hook do
+Zscheduler.add_shutdown_hook do
   puts "I'll run only on shutdown"
 end
 
-Zscheduler.showdown # run shutdown hooks and cancel timers
+Zscheduler.shutdown # run shutdown hooks and cancel timers
 ```
 
 run now and every
