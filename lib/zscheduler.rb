@@ -23,7 +23,7 @@ module Zscheduler
       wrapper and EM.stop
     end
 
-    alias_method :showdown, :stop
+    alias_method :shutdown, :stop
 
     def add_shutdown_hook(&block)
       shutdown_hooks.push block
