@@ -49,7 +49,7 @@ Zscheduler.shutdown # run shutdown hooks and cancel timers
 
 run now and every
 ```ruby
-Zscheduler.every 10, immediately: true do
+Zscheduler.every 10, now: true do
   puts "I'll run immediately and every 10 seconds"
 end
 
@@ -65,6 +65,30 @@ end
 
 Zscheduler.join
 ```
+
+Start the scheduler in a given time
+```ruby
+Zscheduler.every(10,start_at: Time.now + 5) do
+  puts "Will run 5 seconds from now and then for every 10 seconds"
+end
+
+# same as above
+Zscheduler.every(10,start_in: 5) do
+  puts "Will run 5 seconds from now and then for every 10 seconds"
+end
+```
+Run something once
+```ruby
+Zscheduler.once(Time.now + 10) do
+  puts "I'm running 10 seconds from now"
+end
+
+# Same as above
+Zscheduler.once(10) do
+  puts "I'm running 10 seconds from now"
+end
+```
+
 basic duration utils are also included
 
 ```ruby
