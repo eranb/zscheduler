@@ -1,10 +1,10 @@
 ## Zscheduler 
-minimalistic scheduler on top of `eventmachine`
+Minimalistic scheduler on top of `eventmachine`
 
 ### Why ?
 two reasons, the first is that we don't need to give a fuck if `eventmachine`
 reactor is running or not, if its already running we can stop/start the scheduler
-w/o affecting the actual reactor and the second reason is to add some useful
+w/o affecting it and the second reason is to add some useful
 scheduling methods as mentioned below.
 
 ### Installation
@@ -66,7 +66,7 @@ end
 Zscheduler.join
 ```
 
-Start the scheduler in a given time
+start the scheduler in a given time
 ```ruby
 Zscheduler.every(10,start_at: Time.now + 5) do
   puts "Will run 5 seconds from now and then for every 10 seconds"
@@ -77,7 +77,7 @@ Zscheduler.every(10,start_in: 5) do
   puts "Will run 5 seconds from now and then for every 10 seconds"
 end
 ```
-Run something once
+run something once
 ```ruby
 Zscheduler.once(Time.now + 10) do
   puts "I'm running 10 seconds from now"
@@ -127,7 +127,7 @@ Zscheduler.shutdown
 
 EventMachine.reactor_running? # => false
 ```
-and when it's already running
+when it's already running
 
 ```ruby
 EventMachine.reactor_running? # => true
