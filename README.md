@@ -76,6 +76,8 @@ end
 Zscheduler.every(10,start_in: 5) do
   puts "Will run 5 seconds from now and then for every 10 seconds"
 end
+
+Zscheduler.join
 ```
 run something once
 ```ruby
@@ -87,6 +89,8 @@ end
 Zscheduler.once(10) do
   puts "I'm running 10 seconds from now"
 end
+
+Zscheduler.join
 ```
 
 basic duration utils are also included
