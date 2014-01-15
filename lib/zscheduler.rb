@@ -96,7 +96,7 @@ module Zscheduler
     def stop
       timers.each(&:cancel)
       shutdown_hooks.each(&:call)
-      wrapper and EM.stop
+      wrapper and EM.reactor_running? and EM.stop
     end
 
     alias_method :shutdown, :stop
