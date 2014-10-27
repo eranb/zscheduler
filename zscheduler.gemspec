@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
   s.homepage              = 'http://github.com/eranb/zscheduler'
   s.required_ruby_version = '>= 1.8.5'
   s.rubyforge_project     = "zscheduler"
-  s.files                 = FileList["{lib}/**/*"].to_a
+  s.license               = 'LGPL-3.0'
+  s.files                 = FileList["{lib}/**/*"].to_a.append("LICENSE")
   s.require_path          = "lib"
   s.require_paths         = ["lib"]
 
