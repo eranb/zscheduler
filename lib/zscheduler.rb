@@ -116,6 +116,10 @@ module Zscheduler
       (wrapper or EM.reactor_thread).join
     end
 
+    def init_reactor?
+      !!wrapper
+    end
+
     private
 
     def start_reactor
