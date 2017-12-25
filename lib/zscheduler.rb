@@ -51,6 +51,7 @@ module Zscheduler
     #
     def every(frequency,options = {}, &block)
       block_given? or raise ArgumentError, "no block was given..."
+      block = wrap block
       start_reactor
 
       add_shutdown_hook(&block) if options[:on_shutdown]
@@ -89,7 +90,7 @@ module Zscheduler
     def once(seconds, &block)
       start_reactor
       seconds = (seconds - Time.now) if seconds.kind_of?(Time)
-      timers.push(Timer.new(EM::Timer.new(seconds.to_i,&block))).last
+      timers.push(Timer.new(EM::Timer.new(seconds.to_i,&wrap(block)))).last
     end
 
     # Stop the scheduler, cancel all timers and run all the shutdown hooks
@@ -121,6 +122,19 @@ module Zscheduler
     end
 
     private
+
+    def wrap block
+      proc do
+        begin
+          block.call
+        rescue Exception => e
+          init_reactor? ?
+            raise :
+            STDERR.puts("[ZScheduler][#{block.source_location.join(":")}]" + 
+                        "#{e.message}\n#{e.backtrace.join("\n")}")
+        end
+      end
+    end
 
     def start_reactor
       return if EM.reactor_running?
